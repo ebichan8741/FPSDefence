@@ -12,7 +12,7 @@
 #include "../../interface/sceneModel.h"
 #include "player.h"
 //#include "bullet.h"
-//#include "meshField.h"
+#include "../meshField.h"
 #include "../../interface/fade.h"
 #include "../../result/resultMode.h"
 #include "../../interface/input.h"
@@ -89,8 +89,8 @@ void CPlayer::Update(void)
         m_vPos.x -= 0.5f;
     }
 
-    ////Y座標をフィールドに合わせる
-    //m_vPos.y = CGameMode::GetMeshField()->GetHeight(m_vPos);
+    //Y座標をフィールドに合わせる
+    m_vPos.y = CGameMode::GetMeshField()->GetHeight(m_vPos);
 
     //FPSモード
     if (CManager::GetCamera()->m_bFps == true) {

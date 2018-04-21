@@ -22,6 +22,7 @@
     <ClCompile Include="sources\game\camera.cpp" />
     <ClCompile Include="Sources\GAME\gameMode.cpp" />
     <ClCompile Include="sources\game\light.cpp" />
+    <ClCompile Include="sources\game\meshFIeld.cpp" />
     <ClCompile Include="Sources\GAME\PLAYER\player.cpp" />
     <ClCompile Include="sources\interface\debug.cpp" />
     <ClCompile Include="sources\interface\fade.cpp" />
@@ -43,6 +44,7 @@
     <ClInclude Include="sources\game\camera.h" />
     <ClInclude Include="Sources\GAME\gameMode.h" />
     <ClInclude Include="sources\game\light.h" />
+    <ClInclude Include="sources\game\meshField.h" />
     <ClInclude Include="Sources\GAME\PLAYER\player.h" />
     <ClInclude Include="sources\interface\debug.h" />
     <ClInclude Include="sources\interface\fade.h" />

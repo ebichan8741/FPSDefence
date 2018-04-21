@@ -46,7 +46,7 @@ void CResultMode::Uninit(void)
 //*************************************************************************************************
 void CResultMode::Update(void)
 {
-    if (CManager::GetInputKeyboard()->GetKeyTrigger(DIK_SPACE)) {
+    if (CManager::GetInputKeyboard()->GetKeyTrigger(DIK_RETURN)) {
         CFade::SetFade(FADE_OUT, new CTitleMode);
     }
 }

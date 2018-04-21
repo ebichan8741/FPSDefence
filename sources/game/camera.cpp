@@ -9,7 +9,7 @@
 #include "../manager/renderer.h"
 #include "../game/gameMode.h"
 #include "camera.h"
-//#include "meshField.h"
+#include "meshField.h"
 #include "../interface/input.h"
 #include "../interface/sound.h"
 
@@ -122,33 +122,33 @@ void CCamera::Update(void)
             m_bFps = !m_bFps;
         }
 
-        // FPSモード
-        //if (m_bFps == true && CManager::GetMode() == MODE_GAME) {
+         //FPSモード
+        if (m_bFps == true && CManager::GetMode() == MODE_GAME) {
 
-        //    bool jump = m_Jump;
+            bool jump = m_Jump;
 
-        //    // 重力計算
-        //    if (m_vCameraPos.y >= CGameMode::GetMeshField()->GetHeight(m_vCameraPos) + 10) {
-        //        m_Force -= _Gravity;
+            // 重力計算
+            if (m_vCameraPos.y >= CGameMode::GetMeshField()->GetHeight(m_vCameraPos) + 10) {
+                m_Force -= _Gravity;
 
-        //    }
-        //    else {
-        //        m_Jump = false;
-        //        m_vCameraPos.y = CGameMode::GetMeshField()->GetHeight(m_vCameraPos) + 10;
-        //    }
-        //    // ジャンプ
-        //    if (CManager::GetInputKeyboard()->GetKeyTrigger(DIK_SPACE) && m_Jump == false) {
-        //        m_Force = JUMP_FORCE;
-        //        m_Jump = true;
-        //    }
+            }
+            else {
+                m_Jump = false;
+                m_vCameraPos.y = CGameMode::GetMeshField()->GetHeight(m_vCameraPos) + 10;
+            }
+            // ジャンプ
+            if (CManager::GetInputKeyboard()->GetKeyTrigger(DIK_SPACE) && m_Jump == false) {
+                m_Force = JUMP_FORCE;
+                m_Jump = true;
+            }
 
-        //    // 着地音
-        //    if (jump == true && m_Jump == false) {
-        //        CManager::GetSound()->PlaySound(SOUND_LABEL_SE_TYAKUTI);
-        //    }
+            // 着地音
+            if (jump == true && m_Jump == false) {
+                CManager::GetSound()->PlaySound(SOUND_LABEL_SE_TYAKUTI);
+            }
 
-        //    m_vCameraPos.y += m_Force * dt;
-        //}
+            m_vCameraPos.y += m_Force * dt;
+        }
 
         // マウスが画面中央からどれだけ移動したかを取得し、値を変化させる
         // YawはY軸を中心とした横回転

@@ -13,7 +13,7 @@
 #include "../interface/fade.h"
 #include "../interface/scene.h"
 //#include "MouseCursol.h"
-//#include "meshField.h"
+#include "meshField.h"
 //#include "meshField2.h"
 //#include "meshDome.h"
 #include "player/player.h"
@@ -29,7 +29,7 @@
 //=================================================================================================
 // 静的メンバ変数
 //=================================================================================================
-//CMeshField *CGameMode::m_pMeshField = 0;
+CMeshField *CGameMode::m_pMeshField = 0;
 CPlayer *CGameMode::m_pPlayer = 0;
 //CEnemy *CGameMode::m_pEnemy[] = { 0 };
 //CNumber *CGameMode::m_pBulletNumber[NUMBER_DIGIT] = { 0 };
@@ -51,8 +51,8 @@ HRESULT CGameMode::Init(void)
 
     //CMeshField2::Create();
 
-    ////メッシュフィールドの生成
-    //m_pMeshField = CMeshField::Create();
+    //メッシュフィールドの生成
+    m_pMeshField = CMeshField::Create();
 
     ////メッシュドームの生成
     //CMeshDome::Create();
@@ -134,11 +134,11 @@ void CGameMode::Uninit(void)
     //        m_pEnemy[i] = NULL;
     //    }
     //}
-    //// メッシュフィールドポインタの破棄
-    //if (m_pMeshField != NULL)
-    //{
-    //    m_pMeshField = NULL;
-    //}
+    // メッシュフィールドポインタの破棄
+    if (m_pMeshField != NULL)
+    {
+        m_pMeshField = NULL;
+    }
 
     //CManager::GetSound()->StopSound(SOUND_LABEL_BGM000);
 }
@@ -162,7 +162,7 @@ void CGameMode::Update(void)
     //    }
     //}
 
-    if (CManager::GetInputKeyboard()->GetKeyTrigger(DIK_SPACE) || m_flag == true) {
+    if (CManager::GetInputKeyboard()->GetKeyTrigger(DIK_RETURN) || m_flag == true) {
         CFade::SetFade(FADE_OUT, new CResultMode);
     }
 }
@@ -184,10 +184,10 @@ void CGameMode::Draw(void)
 //*************************************************************************************************
 // メッシュフィールドのポインタ取得
 //*************************************************************************************************
-//CMeshField *CGameMode::GetMeshField(void)
-//{
-//    return CGameMode::m_pMeshField;
-//}
+CMeshField *CGameMode::GetMeshField(void)
+{
+    return CGameMode::m_pMeshField;
+}
 
 //*************************************************************************************************
 // プレイヤーのポインタ取得

@@ -17,8 +17,8 @@
 //=============================================================================
 //ëOï˚êÈåæ
 //=============================================================================
-//class CMeshField;
-//CMeshField *GetMeshField(void);
+class CMeshField;
+CMeshField *GetMeshField(void);
 class CPlayer;
 CPlayer *GetPlayer(void);
 //class CEnemy;
@@ -38,7 +38,7 @@ public:
     void Update(void);
     void Draw(void);
 
-    //static CMeshField *GetMeshField(void);
+    static CMeshField *GetMeshField(void);
     static CPlayer *GetPlayer(void);
     //static CEnemy *GetEnemy(int ID);
     //static CNumber *GetBulletNumber(int ID);
@@ -49,7 +49,7 @@ public:
 
 private:
     static CPlayer *m_pPlayer;
-    //static CMeshField *m_pMeshField;
+    static CMeshField *m_pMeshField;
     //static CEnemy *m_pEnemy[ENEMY_NUM];
     //static CNumber *m_pBulletNumber[NUMBER_DIGIT];
     //static CNumber *m_pHPNumber[HP_DIGIT];
