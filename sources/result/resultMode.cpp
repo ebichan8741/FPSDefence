@@ -13,7 +13,8 @@
 #include "../interface/fade.h"
 #include "../interface/scene.h"
 #include "../interface/scene2D.h"
-#include "ResultBG.h"
+#include "resultBG.h"
+#include "resultLogo.h"
 #include "../interface/input.h"
 
 //=================================================================================================
@@ -28,7 +29,7 @@ HRESULT CResultMode::Init(void)
     CManager::mode = MODE_RESULT;
 
     CResultBG::Create();
-
+    CResultLogo::Create();
     return 0;
 }
 

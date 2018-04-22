@@ -12,17 +12,19 @@
 #include "../result/resultMode.h"
 #include "../interface/fade.h"
 #include "../interface/scene.h"
-//#include "MouseCursol.h"
 #include "meshField.h"
 #include "meshDome.h"
 #include "player/player.h"
-//#include "enemy/enemy.h"
-//#include "bullet.h"
+#include "player/playerReticle.h"
+#include "enemy/enemy.h"
+#include "enemy/enemyLoader.h"
+#include "player/playerBullet.h"
+#include "enemy/enemyBullet.h"
 //#include "HitPoint.h"
 #include "camera.h"
 #include "../interface/input.h"
 #include "../interface/sound.h"
-//#include "number.h"
+#include "number.h"
 //#include "effect.h"
 
 //=================================================================================================
@@ -30,9 +32,10 @@
 //=================================================================================================
 CMeshField *CGameMode::m_pMeshField = 0;
 CPlayer *CGameMode::m_pPlayer = 0;
-//CEnemy *CGameMode::m_pEnemy[] = { 0 };
-//CNumber *CGameMode::m_pBulletNumber[NUMBER_DIGIT] = { 0 };
-//CNumber *CGameMode::m_pHPNumber[HP_DIGIT] = { 0 };
+std::vector <CEnemy*> CGameMode::m_pEnemy;
+CNumber *CGameMode::m_pBulletNumber[NUMBER_DIGIT] = { 0 };
+CNumber *CGameMode::m_pHPNumber[HP_DIGIT] = { 0 };
+CNumber *CGameMode::m_pScore[SCORE_DIGIT] = { 0 };
 bool CGameMode::m_flag = false;
 int CGameMode::m_EnemyCnt = 0;
 
@@ -58,14 +61,12 @@ HRESULT CGameMode::Init(void)
     m_pPlayer = CPlayer::Create(D3DXVECTOR3(0.0f, 0.0f, -140.0f));
 
     //エネミーの生成
-    //m_pEnemy[0] = CEnemy::Create(D3DXVECTOR3(0.0f, 0.0f, -70.0f), 0, ENEMY_TYPE_NORMAL);
-    //m_pEnemy[1] = CEnemy::Create(D3DXVECTOR3(-100.0f, 0.0f, -70.0f),1,ENEMY_TYPE_NORMAL);
-    //m_pEnemy[2] = CEnemy::Create(D3DXVECTOR3(100.0f, 0.0f, -70.0f),2,ENEMY_TYPE_NORMAL);
+    CEnemyLoader::EnemyLoad();
 
-    m_EnemyCnt = ENEMY_NUM;
+    m_EnemyCnt = CEnemyLoader::GetMaxEnemy();
 
-    //マウスカーソルの生成
-    //CMouseCursol::Create();
+    //レティクルの生成
+    CReticle::Create();
 
     CManager::GetCamera()->Init();
 
@@ -75,20 +76,20 @@ HRESULT CGameMode::Init(void)
     // エフェクトテクスチャ読み込み
     //CEffect::Load();
 
-    // 数字テクスチャ読み込み
-    //CNumber::Load();
+    //数字テクスチャ読み込み
+    CNumber::Load();
 
-    // 弾数表示生成
-    //m_pBulletNumber[0] = CNumber::Create(D3DXVECTOR2(800.0f, 650.0f), D3DXVECTOR2(30.0f, 50.0f));
-    //m_pBulletNumber[1] = CNumber::Create(D3DXVECTOR2(830.0f, 650.0f), D3DXVECTOR2(30.0f, 50.0f));
-    //m_pBulletNumber[2] = CNumber::Create(D3DXVECTOR2(860.0f, 650.0f), D3DXVECTOR2(30.0f, 50.0f));
-    //m_pBulletNumber[3] = CNumber::Create(D3DXVECTOR2(890.0f, 650.0f), D3DXVECTOR2(30.0f, 50.0f));
-    //m_pBulletNumber[4] = CNumber::Create(D3DXVECTOR2(920.0f, 650.0f), D3DXVECTOR2(30.0f, 50.0f));
+    //弾数表示生成
+    m_pBulletNumber[0] = CNumber::Create(D3DXVECTOR2(800.0f, 650.0f), D3DXVECTOR2(30.0f, 50.0f));
+    m_pBulletNumber[1] = CNumber::Create(D3DXVECTOR2(830.0f, 650.0f), D3DXVECTOR2(30.0f, 50.0f));
+    m_pBulletNumber[2] = CNumber::Create(D3DXVECTOR2(860.0f, 650.0f), D3DXVECTOR2(30.0f, 50.0f));
+    m_pBulletNumber[3] = CNumber::Create(D3DXVECTOR2(890.0f, 650.0f), D3DXVECTOR2(30.0f, 50.0f));
+    m_pBulletNumber[4] = CNumber::Create(D3DXVECTOR2(920.0f, 650.0f), D3DXVECTOR2(30.0f, 50.0f));
 
-    //// ＨＰ表示生成
-    //m_pHPNumber[0] = CNumber::Create(D3DXVECTOR2(80.0f, 650.0f), D3DXVECTOR2(30.0f, 50.0f));
-    //m_pHPNumber[1] = CNumber::Create(D3DXVECTOR2(110.0f, 650.0f), D3DXVECTOR2(30.0f, 50.0f));
-    //m_pHPNumber[2] = CNumber::Create(D3DXVECTOR2(140.0f, 650.0f), D3DXVECTOR2(30.0f, 50.0f));
+    // ＨＰ表示生成
+    m_pHPNumber[0] = CNumber::Create(D3DXVECTOR2(80.0f, 650.0f), D3DXVECTOR2(30.0f, 50.0f));
+    m_pHPNumber[1] = CNumber::Create(D3DXVECTOR2(110.0f, 650.0f), D3DXVECTOR2(30.0f, 50.0f));
+    m_pHPNumber[2] = CNumber::Create(D3DXVECTOR2(140.0f, 650.0f), D3DXVECTOR2(30.0f, 50.0f));
 
 
     //CManager::GetSound()->PlaySound(SOUND_LABEL_BGM000);
@@ -102,18 +103,19 @@ HRESULT CGameMode::Init(void)
 void CGameMode::Uninit(void)
 {
     //バレットテクスチャの破棄
-    //CBullet::Unload();
+    CPlayerBullet::Unload();
+    CEnemyBullet::Unload();
 
-    //// 数字テクスチャの破棄
-    //CNumber::Unload();
-    //for (int i = 0; i < NUMBER_DIGIT; i++) {
-    //    m_pBulletNumber[i]->Uninit();
-    //}
+    // 数字テクスチャの破棄
+    CNumber::Unload();
+    for (int i = 0; i < NUMBER_DIGIT; i++) {
+        m_pBulletNumber[i]->Uninit();
+    }
 
-    //// ＨＰテクスチャの破棄
-    //for (int i = 0; i < HP_DIGIT; i++) {
-    //    m_pHPNumber[i]->Uninit();
-    //}
+    // ＨＰテクスチャの破棄
+    for (int i = 0; i < HP_DIGIT; i++) {
+        m_pHPNumber[i]->Uninit();
+    }
 
     //オブジェクトの解放
     CScene::ReleaseAll();
@@ -123,6 +125,8 @@ void CGameMode::Uninit(void)
     {
         m_pPlayer = NULL;
     }
+
+    m_pEnemy.clear();
 
     //for (int i = 0; i < 3; i++) {
     //    // プレイヤーポインタの破棄
@@ -145,13 +149,13 @@ void CGameMode::Uninit(void)
 //*************************************************************************************************
 void CGameMode::Update(void)
 {
-    //for (int i = 0; i < NUMBER_DIGIT; i++) {
-    //    m_pBulletNumber[i]->Update();
-    //}
+    for (int i = 0; i < NUMBER_DIGIT; i++) {
+        m_pBulletNumber[i]->Update();
+    }
 
-    //for (int i = 0; i < HP_DIGIT; i++) {
-    //    m_pHPNumber[i]->Update();
-    //}
+    for (int i = 0; i < HP_DIGIT; i++) {
+        m_pHPNumber[i]->Update();
+    }
 
     //if (m_pPlayer != NULL) {
     //    if (GetPlayer()->GetLife() == 0 || m_EnemyCnt == 0) {
@@ -169,13 +173,13 @@ void CGameMode::Update(void)
 //*************************************************************************************************
 void CGameMode::Draw(void)
 {
-    //for (int i = 0; i < NUMBER_DIGIT; i++) {
-    //    m_pBulletNumber[i]->Draw();
-    //}
+    for (int i = 0; i < NUMBER_DIGIT; i++) {
+        m_pBulletNumber[i]->Draw();
+    }
 
-    //for (int i = 0; i < HP_DIGIT; i++) {
-    //    m_pHPNumber[i]->Draw();
-    //}
+    for (int i = 0; i < HP_DIGIT; i++) {
+        m_pHPNumber[i]->Draw();
+    }
 }
 
 //*************************************************************************************************
@@ -197,23 +201,31 @@ CPlayer *CGameMode::GetPlayer(void)
 //*************************************************************************************************
 // エネミーのポインタ取得
 //*************************************************************************************************
-//CEnemy *CGameMode::GetEnemy(int ID)
-//{
-//    return CGameMode::m_pEnemy[ID];
-//}
-//
-////*************************************************************************************************
-//// 弾数のポインタ取得
-////*************************************************************************************************
-//CNumber *CGameMode::GetBulletNumber(int ID)
-//{
-//    return CGameMode::m_pBulletNumber[ID];
-//}
-//
-////*************************************************************************************************
-//// ＨＰのポインタ取得
-////*************************************************************************************************
-//CNumber *CGameMode::GetHPNumber(int ID)
-//{
-//    return CGameMode::m_pHPNumber[ID];
-//}
+CEnemy *CGameMode::GetEnemy(int ID)
+{
+    return CGameMode::m_pEnemy[ID];
+}
+
+//*************************************************************************************************
+// 弾数のポインタ取得
+//*************************************************************************************************
+CNumber *CGameMode::GetBulletNumber(int ID)
+{
+    return CGameMode::m_pBulletNumber[ID];
+}
+
+//*************************************************************************************************
+// ＨＰのポインタ取得
+//*************************************************************************************************
+CNumber *CGameMode::GetHPNumber(int ID)
+{
+    return CGameMode::m_pHPNumber[ID];
+}
+
+//*************************************************************************************************
+// スコアのポインタ取得
+//*************************************************************************************************
+CNumber *CGameMode::GetScore(int ID)
+{
+    return CGameMode::m_pScore[ID];
+}

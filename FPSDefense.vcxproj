@@ -20,11 +20,21 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="sources\game\camera.cpp" />
+    <ClCompile Include="sources\game\collision.cpp" />
+    <ClCompile Include="sources\game\enemy\enemy.cpp" />
+    <ClCompile Include="sources\game\enemy\enemyBullet.cpp" />
+    <ClCompile Include="sources\game\enemy\enemyLoader.cpp" />
+    <ClCompile Include="sources\game\enemy\enemyTypeFlying.cpp" />
     <ClCompile Include="Sources\GAME\gameMode.cpp" />
+    <ClCompile Include="sources\game\hitCheckToSphere.cpp" />
     <ClCompile Include="sources\game\light.cpp" />
     <ClCompile Include="sources\game\meshDome.cpp" />
     <ClCompile Include="sources\game\meshFIeld.cpp" />
+    <ClCompile Include="sources\game\number.cpp" />
     <ClCompile Include="Sources\GAME\PLAYER\player.cpp" />
+    <ClCompile Include="sources\game\player\playerBullet.cpp" />
+    <ClCompile Include="sources\game\player\playerReticle.cpp" />
+    <ClCompile Include="sources\game\score.cpp" />
     <ClCompile Include="sources\interface\debug.cpp" />
     <ClCompile Include="sources\interface\fade.cpp" />
     <ClCompile Include="sources\interface\input.cpp" />
@@ -37,6 +47,7 @@
     <ClCompile Include="Sources\MANAGER\manager.cpp" />
     <ClCompile Include="Sources\MANAGER\renderer.cpp" />
     <ClCompile Include="sources\result\resultBG.cpp" />
+    <ClCompile Include="sources\result\resultLogo.cpp" />
     <ClCompile Include="Sources\RESULT\resultMode.cpp" />
     <ClCompile Include="sources\title\titleBG.cpp" />
     <ClCompile Include="sources\title\titleLogo.cpp" />
@@ -46,11 +57,21 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="sources\game\camera.h" />
+    <ClInclude Include="sources\game\collision.h" />
+    <ClInclude Include="sources\game\enemy\enemy.h" />
+    <ClInclude Include="sources\game\enemy\enemyBullet.h" />
+    <ClInclude Include="sources\game\enemy\enemyLoader.h" />
+    <ClInclude Include="sources\game\enemy\enemyTypeFlying.h" />
     <ClInclude Include="Sources\GAME\gameMode.h" />
+    <ClInclude Include="sources\game\hitCheckToSphere.h" />
     <ClInclude Include="sources\game\light.h" />
     <ClInclude Include="sources\game\meshDome.h" />
     <ClInclude Include="sources\game\meshField.h" />
+    <ClInclude Include="sources\game\number.h" />
     <ClInclude Include="Sources\GAME\PLAYER\player.h" />
+    <ClInclude Include="sources\game\player\playerBullet.h" />
+    <ClInclude Include="sources\game\player\playerReticle.h" />
+    <ClInclude Include="sources\game\score.h" />
     <ClInclude Include="sources\interface\debug.h" />
     <ClInclude Include="sources\interface\fade.h" />
     <ClInclude Include="sources\interface\input.h" />
@@ -64,6 +85,7 @@
     <ClInclude Include="sources\manager\modeManager.h" />
     <ClInclude Include="Sources\MANAGER\renderer.h" />
     <ClInclude Include="sources\result\resultBG.h" />
+    <ClInclude Include="sources\result\resultLogo.h" />
     <ClInclude Include="Sources\RESULT\resultMode.h" />
     <ClInclude Include="sources\title\titleBG.h" />
     <ClInclude Include="sources\title\titleLogo.h" />

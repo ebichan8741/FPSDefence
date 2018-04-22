@@ -74,7 +74,7 @@ CResultBG *CResultBG::Create(void)
     resultBG = new CResultBG(PRIOLITY_0);
     resultBG->Init();
 
-    resultBG->LoadTexture(TEXTURE_RESULT);
+    resultBG->LoadTexture(TEXTURE_RESULTBG);
 
     return resultBG;
 }

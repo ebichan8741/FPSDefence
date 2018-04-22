@@ -34,7 +34,9 @@ TEXPARAM g_aTexParam[TEXTURE_MAX] =
     "data/TEXTURE/titleLogo.png",
     "data/TEXTURE/titleLogoBG.png",
     "data/TEXTURE/titleStartButton.png",
-    "data/TEXTURE/resultBG.jpg"
+    "data/TEXTURE/reticle.png",
+    "data/TEXTURE/resultBG.jpg",
+    "data/TEXTURE/resultLogo.png"
 };
 
 //*************************************************************************************************

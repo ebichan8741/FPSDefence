@@ -13,19 +13,16 @@
 #define NUMBER_DIGIT	(5)		// 弾数の桁
 #define ENEMY_NUM		(1)		// エネミーの数
 #define HP_DIGIT		(3)		// HPの桁
+#define SCORE_DIGIT     (6)     // スコアの桁数
 
 //=============================================================================
 //前方宣言
 //=============================================================================
 class CMeshField;
-CMeshField *GetMeshField(void);
 class CPlayer;
-CPlayer *GetPlayer(void);
-//class CEnemy;
-//CEnemy *GetEnemy(int ID);
-//class CNumber;
-//CNumber *GetBulletNumber(int ID);
-//CNumber *GetHPNumber(int ID);
+class CEnemy;
+class CEnemyFly;
+class CNumber;
 
 //=============================================================================
 // クラス定義
@@ -40,19 +37,21 @@ public:
 
     static CMeshField *GetMeshField(void);
     static CPlayer *GetPlayer(void);
-    //static CEnemy *GetEnemy(int ID);
-    //static CNumber *GetBulletNumber(int ID);
-    //static CNumber *GetHPNumber(int ID);
+    static CEnemy *GetEnemy(int ID);
+    static CNumber *GetBulletNumber(int ID);
+    static CNumber *GetHPNumber(int ID);
+    static CNumber *GetScore(int ID);
 
     static bool m_flag;
     static int m_EnemyCnt;
 
-private:
+protected:
     static CPlayer *m_pPlayer;
     static CMeshField *m_pMeshField;
-    //static CEnemy *m_pEnemy[ENEMY_NUM];
-    //static CNumber *m_pBulletNumber[NUMBER_DIGIT];
-    //static CNumber *m_pHPNumber[HP_DIGIT];
+    static std::vector<CEnemy*> m_pEnemy;
+    static CNumber *m_pBulletNumber[NUMBER_DIGIT];
+    static CNumber *m_pHPNumber[HP_DIGIT];
+    static CNumber *m_pScore[SCORE_DIGIT];
 
 };
 
