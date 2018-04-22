@@ -1,22 +1,22 @@
 
 //================================================================================================
 //
-// タイトル管理 [TitleMode.cpp]
+// タイトル管理 [titleMode.cpp]
 // Author : TAKUYA EBIHARA
 //
 //================================================================================================
 #include "../main.h"
 #include "../manager/manager.h"
 #include "../manager/renderer.h"
-#include "TitleMode.h"
+#include "titleMode.h"
 #include "../game/gameMode.h"
 #include "../interface/fade.h"
 #include "../interface/scene.h"
 #include "../interface/scene2D.h"
-#include "TitleBG.h"
-//#include "TitleBG2.h"
-//#include "TitleLogo.h"
-//#include "TitleStart.h"
+#include "titleBG.h"
+#include "titleLogo.h"
+#include "titleLogoBG.h"
+#include "titleStartButton.h"
 #include "../interface/input.h"
 #include "../interface/sound.h"
 //#include "TextureManager.h"
@@ -32,9 +32,9 @@ HRESULT CTitleMode::Init(void)
     //    CManager::GetTextureManager()->Load(CManager::GetTextureManager()->getTextureName((TEX_PARAM)i));
     //}
     CTitleBG::Create();
-    //CTitleBG2::Create();
-    //CTitleLogo::Create();
-    //CTitleStart::Create();
+    CTitleLogoBG::Create();
+    CTitleLogo::Create();
+    CTitleStart::Create();
 
     //CManager::GetSound()->PlaySound(SOUND_LABEL_TITLE);
 

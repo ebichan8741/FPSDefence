@@ -52,6 +52,8 @@ public:
     static void ReleaseAll(void);
     void Release(void);
 
+    D3DXVECTOR2 GetPosition2D(void);
+    D3DXVECTOR2 GetSize2D(void);
     D3DXVECTOR3 GetPosition(void);
     D3DXVECTOR3 GetSize(void);
     float GetLength(void);
@@ -60,6 +62,8 @@ public:
     static CScene *GetList(int nPriority);
 
 protected:
+    D3DXVECTOR2 m_vPos2D;
+    D3DXVECTOR2 m_vSize2D;
     D3DXVECTOR3 m_vPos;
     D3DXVECTOR3 m_vSize;
     float m_LengthSq;

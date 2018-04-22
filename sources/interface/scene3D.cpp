@@ -148,7 +148,7 @@ void CScene3D::Draw(void)
         0,									//オフセット(バイト)
         sizeof(VERTEX_3D));					//一個の頂点データのサイズ(ストライド量)
 
-                                            //頂点フォーマットの設定
+    //頂点フォーマットの設定
     pDevice->SetFVF(FVF_VERTEX_3D);
 
     //テクスチャの設定

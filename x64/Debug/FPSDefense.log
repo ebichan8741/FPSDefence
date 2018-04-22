@@ -1,0 +1,61 @@
+﻿  titleMode.cpp
+  titleBG.cpp
+  resultMode.cpp
+  resultBG.cpp
+  renderer.cpp
+  manager.cpp
+  main.cpp
+  sound.cpp
+  sceneModel.cpp
+  scene3D.cpp
+  scene2D.cpp
+  scene.cpp
+  input.cpp
+c:\users\ebichan\documents\就職作品\fpsdefense\sources\interface\input.cpp(248): warning C4244: '=': 'LONG' から 'float' への変換です。データが失われる可能性があります。
+c:\users\ebichan\documents\就職作品\fpsdefense\sources\interface\input.cpp(249): warning C4244: '=': 'LONG' から 'float' への変換です。データが失われる可能性があります。
+c:\users\ebichan\documents\就職作品\fpsdefense\sources\interface\input.cpp(348): warning C4244: '=': 'LONG' から 'float' への変換です。データが失われる可能性があります。
+c:\users\ebichan\documents\就職作品\fpsdefense\sources\interface\input.cpp(349): warning C4244: '=': 'LONG' から 'float' への変換です。データが失われる可能性があります。
+c:\users\ebichan\documents\就職作品\fpsdefense\sources\interface\input.cpp(350): warning C4244: '=': 'LONG' から 'float' への変換です。データが失われる可能性があります。
+c:\users\ebichan\documents\就職作品\fpsdefense\sources\interface\input.cpp(351): warning C4244: '=': 'LONG' から 'float' への変換です。データが失われる可能性があります。
+c:\users\ebichan\documents\就職作品\fpsdefense\sources\interface\input.cpp(404): warning C4800: 'int': ブール値を 'true' または 'false' に強制的に設定します (警告の処理)
+  fade.cpp
+  debug.cpp
+  player.cpp
+c:\users\ebichan\documents\就職作品\fpsdefense\sources\game\player\player.cpp(151): warning C4101: 'matDef': ローカル変数は 1 度も使われていません。
+  meshFIeld.cpp
+c:\users\ebichan\documents\就職作品\fpsdefense\sources\game\meshfield.cpp(221): warning C4390: ';': 制御が空の文が見つかりました。意図した記述でしょうか?
+c:\users\ebichan\documents\就職作品\fpsdefense\sources\game\meshfield.cpp(385): warning C4244: '=': 'int' から 'float' への変換です。データが失われる可能性があります。
+  light.cpp
+  gameMode.cpp
+  camera.cpp
+c:\users\ebichan\documents\就職作品\fpsdefense\sources\game\camera.cpp(255): warning C4101: 'fLength': ローカル変数は 1 度も使われていません。
+  コードを生成中...
+camera.obj : error LNK2019: 未解決の外部シンボル D3DXVec3TransformNormal が関数 "public: void __cdecl CCamera::Update(void)" (?Update@CCamera@@QEAAXXZ) で参照されました。
+camera.obj : error LNK2019: 未解決の外部シンボル D3DXMatrixInverse が関数 "public: void __cdecl CCamera::SetCamera(void)" (?SetCamera@CCamera@@QEAAXXZ) で参照されました。
+camera.obj : error LNK2019: 未解決の外部シンボル D3DXMatrixRotationYawPitchRoll が関数 "public: void __cdecl CCamera::Update(void)" (?Update@CCamera@@QEAAXXZ) で参照されました。
+player.obj : error LNK2001: 外部シンボル "D3DXMatrixRotationYawPitchRoll" は未解決です。
+camera.obj : error LNK2019: 未解決の外部シンボル D3DXMatrixLookAtLH が関数 "public: void __cdecl CCamera::SetCamera(void)" (?SetCamera@CCamera@@QEAAXXZ) で参照されました。
+camera.obj : error LNK2019: 未解決の外部シンボル D3DXMatrixPerspectiveFovLH が関数 "public: void __cdecl CCamera::SetCamera(void)" (?SetCamera@CCamera@@QEAAXXZ) で参照されました。
+light.obj : error LNK2019: 未解決の外部シンボル D3DXVec3Normalize が関数 "public: void __cdecl CLight::SetLight(void)" (?SetLight@CLight@@QEAAXXZ) で参照されました。
+meshFIeld.obj : error LNK2001: 外部シンボル "D3DXVec3Normalize" は未解決です。
+sceneModel.obj : error LNK2001: 外部シンボル "D3DXCreateTextureFromFileA" は未解決です。
+meshFIeld.obj : error LNK2001: 外部シンボル "D3DXCreateTextureFromFileA" は未解決です。
+fade.obj : error LNK2001: 外部シンボル "D3DXCreateTextureFromFileA" は未解決です。
+scene2D.obj : error LNK2001: 外部シンボル "D3DXCreateTextureFromFileA" は未解決です。
+scene3D.obj : error LNK2001: 外部シンボル "D3DXCreateTextureFromFileA" は未解決です。
+player.obj : error LNK2019: 未解決の外部シンボル D3DXMatrixMultiply が関数 "public: virtual void __cdecl CPlayer::Draw(void)" (?Draw@CPlayer@@UEAAXXZ) で参照されました。
+player.obj : error LNK2019: 未解決の外部シンボル D3DXMatrixTranslation が関数 "public: virtual void __cdecl CPlayer::Draw(void)" (?Draw@CPlayer@@UEAAXXZ) で参照されました。
+debug.obj : error LNK2019: 未解決の外部シンボル D3DXCreateFontA が関数 "public: static void __cdecl CDebug::Init(void)" (?Init@CDebug@@SAXXZ) で参照されました。
+input.obj : error LNK2019: 未解決の外部シンボル DirectInput8Create が関数 "public: virtual long __cdecl CInput::Init(struct HINSTANCE__ *,struct HWND__ *)" (?Init@CInput@@UEAAJPEAUHINSTANCE__@@PEAUHWND__@@@Z) で参照されました。
+input.obj : error LNK2001: 外部シンボル "IID_IDirectInput8A" は未解決です。
+input.obj : error LNK2001: 外部シンボル "GUID_SysMouse" は未解決です。
+input.obj : error LNK2001: 外部シンボル "GUID_SysKeyboard" は未解決です。
+input.obj : error LNK2001: 外部シンボル "c_dfDIMouse2" は未解決です。
+input.obj : error LNK2001: 外部シンボル "c_dfDIKeyboard" は未解決です。
+sceneModel.obj : error LNK2019: 未解決の外部シンボル D3DXLoadMeshFromXA が関数 "public: void __cdecl CSceneModel::LoadModel(enum MODEL_LABEL)" (?LoadModel@CSceneModel@@QEAAXW4MODEL_LABEL@@@Z) で参照されました。
+renderer.obj : error LNK2019: 未解決の外部シンボル Direct3DCreate9 が関数 "public: long __cdecl CRenderer::Init(struct HWND__ *,bool)" (?Init@CRenderer@@QEAAJPEAUHWND__@@_N@Z) で参照されました。
+C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\lib\x86\d3d9.lib : warning LNK4272: ライブラリのコンピューターの種類 'X86' がターゲットのコンピューターの種類' x64' と競合しています
+C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\lib\x86\d3dx9.lib : warning LNK4272: ライブラリのコンピューターの種類 'X86' がターゲットのコンピューターの種類' x64' と競合しています
+C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\lib\x86\dxguid.lib : warning LNK4272: ライブラリのコンピューターの種類 'X86' がターゲットのコンピューターの種類' x64' と競合しています
+C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\lib\x86\dinput8.lib : warning LNK4272: ライブラリのコンピューターの種類 'X86' がターゲットのコンピューターの種類' x64' と競合しています
+C:\Users\ebichan\Documents\就職作品\FPSDefense\x64\Debug\FPSDefense.exe : fatal error LNK1120: 18 件の未解決の外部参照

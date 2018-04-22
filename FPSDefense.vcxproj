@@ -22,6 +22,7 @@
     <ClCompile Include="sources\game\camera.cpp" />
     <ClCompile Include="Sources\GAME\gameMode.cpp" />
     <ClCompile Include="sources\game\light.cpp" />
+    <ClCompile Include="sources\game\meshDome.cpp" />
     <ClCompile Include="sources\game\meshFIeld.cpp" />
     <ClCompile Include="Sources\GAME\PLAYER\player.cpp" />
     <ClCompile Include="sources\interface\debug.cpp" />
@@ -38,12 +39,16 @@
     <ClCompile Include="sources\result\resultBG.cpp" />
     <ClCompile Include="Sources\RESULT\resultMode.cpp" />
     <ClCompile Include="sources\title\titleBG.cpp" />
+    <ClCompile Include="sources\title\titleLogo.cpp" />
+    <ClCompile Include="sources\title\titleLogoBG.cpp" />
     <ClCompile Include="Sources\TITLE\titleMode.cpp" />
+    <ClCompile Include="sources\title\titleStartButton.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="sources\game\camera.h" />
     <ClInclude Include="Sources\GAME\gameMode.h" />
     <ClInclude Include="sources\game\light.h" />
+    <ClInclude Include="sources\game\meshDome.h" />
     <ClInclude Include="sources\game\meshField.h" />
     <ClInclude Include="Sources\GAME\PLAYER\player.h" />
     <ClInclude Include="sources\interface\debug.h" />
@@ -61,7 +66,10 @@
     <ClInclude Include="sources\result\resultBG.h" />
     <ClInclude Include="Sources\RESULT\resultMode.h" />
     <ClInclude Include="sources\title\titleBG.h" />
+    <ClInclude Include="sources\title\titleLogo.h" />
+    <ClInclude Include="sources\title\titleLogoBG.h" />
     <ClInclude Include="Sources\TITLE\titleMode.h" />
+    <ClInclude Include="sources\title\titleStartButton.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{C6556164-F061-4DB6-A30F-6AE766D7CE50}</ProjectGuid>
@@ -87,7 +95,7 @@
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -121,6 +129,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(DXSDK_DIR)include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(DXSDK_DIR)lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -151,8 +161,9 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

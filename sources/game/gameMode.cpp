@@ -14,8 +14,7 @@
 #include "../interface/scene.h"
 //#include "MouseCursol.h"
 #include "meshField.h"
-//#include "meshField2.h"
-//#include "meshDome.h"
+#include "meshDome.h"
 #include "player/player.h"
 //#include "enemy/enemy.h"
 //#include "bullet.h"
@@ -49,13 +48,11 @@ HRESULT CGameMode::Init(void)
 
     //CHitPoint::Create();
 
-    //CMeshField2::Create();
-
     //メッシュフィールドの生成
     m_pMeshField = CMeshField::Create();
 
-    ////メッシュドームの生成
-    //CMeshDome::Create();
+    //メッシュドームの生成
+    CMeshDome::Create();
 
     //プレイヤーの生成
     m_pPlayer = CPlayer::Create(D3DXVECTOR3(0.0f, 0.0f, -140.0f));

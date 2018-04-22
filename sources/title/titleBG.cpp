@@ -76,7 +76,7 @@ CTitleBG *CTitleBG::Create(void)
     titleBG = new CTitleBG(PRIOLITY_0);
     titleBG->Init();
 
-    titleBG->LoadTexture(TEXTURE_TITLE);
+    titleBG->LoadTexture(TEXTURE_TITLEBG);
     //titleBG->m_pTexture = CManager::GetTextureManager()->getResource(CManager::GetTextureManager()->getTextureName(TEXTURE_TITLE));
 
     return titleBG;

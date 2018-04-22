@@ -30,9 +30,10 @@ typedef struct
 //テクスチャパス
 TEXPARAM g_aTexParam[TEXTURE_MAX] =
 {
-    "data/TEXTURE/reticle001.png",
-    "data/TEXTURE/HPicon.png",
     "data/TEXTURE/titleBG03.jpg",
+    "data/TEXTURE/titleLogo.png",
+    "data/TEXTURE/titleLogoBG.png",
+    "data/TEXTURE/titleStartButton.png",
     "data/TEXTURE/resultBG.jpg"
 };
 
@@ -218,6 +219,37 @@ void CScene2D::LoadTexture(TEXTURE_LABEL label)
 
         m_bLoadTexture = true;
     }
+}
+
+//*************************************************************************************************
+// 回転処理（引数：回転対象の中心座標、回転角度）
+//*************************************************************************************************
+void CScene2D::Rotation(D3DXVECTOR2 imgCenter, float deg)
+{
+    VERTEX_2D* pVtx;
+    float rad = D3DXToRadian(deg);
+    // 4頂点の座標をあらかじめ求めておく
+    D3DXVECTOR3 pos0, pos1, pos2, pos3;
+    pos0 = D3DXVECTOR3(m_vPos.x - m_vSize.x / 2, m_vPos.y - m_vSize.y / 2, 0.0f);
+    pos1 = D3DXVECTOR3(m_vPos.x + m_vSize.x / 2, m_vPos.y - m_vSize.y / 2, 0.0f);
+    pos2 = D3DXVECTOR3(m_vPos.x - m_vSize.x / 2, m_vPos.y + m_vSize.y / 2, 0.0f);
+    pos3 = D3DXVECTOR3(m_vPos.x + m_vSize.x / 2, m_vPos.y + m_vSize.y / 2, 0.0f);
+
+    //仮想アドレスの取得
+    m_pVtxBuff->Lock(0, 0, (void**)&pVtx, 0);
+
+    //頂点座標の設定(2D座標・右回り)
+    pVtx[0].pos = D3DXVECTOR3((pos0.x - imgCenter.x) * cosf(-rad) - (pos0.y - imgCenter.y) * sinf(-rad) + imgCenter.x,
+                              (pos0.x - imgCenter.x) * sinf(-rad) + (pos0.y - imgCenter.y) * cosf(-rad) + imgCenter.y, 0.0f);
+    pVtx[1].pos = D3DXVECTOR3((pos1.x - imgCenter.x) * cosf(-rad) - (pos1.y - imgCenter.y) * sinf(-rad) + imgCenter.x,
+                              (pos1.x - imgCenter.x) * sinf(-rad) + (pos1.y - imgCenter.y) * cosf(-rad) + imgCenter.y, 0.0f);
+    pVtx[2].pos = D3DXVECTOR3((pos2.x - imgCenter.x) * cosf(-rad) - (pos2.y - imgCenter.y) * sinf(-rad) + imgCenter.x,
+                              (pos2.x - imgCenter.x) * sinf(-rad) + (pos2.y - imgCenter.y) * cosf(-rad) + imgCenter.y, 0.0f);
+    pVtx[3].pos = D3DXVECTOR3((pos3.x - imgCenter.x) * cosf(-rad) - (pos3.y - imgCenter.y) * sinf(-rad) + imgCenter.x,
+                              (pos3.x - imgCenter.x) * sinf(-rad) + (pos3.y - imgCenter.y) * cosf(-rad) + imgCenter.y, 0.0f);
+
+    //仮想アドレスの解放
+    m_pVtxBuff->Unlock();
 }
 
 void CScene2D::SetColor(D3DXCOLOR color)

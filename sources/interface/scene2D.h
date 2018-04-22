@@ -11,9 +11,10 @@
 
 typedef enum
 {
-    TEXTURE_MOUSECURSOL = 0,
-    TEXTURE_HP,
-    TEXTURE_TITLE,
+    TEXTURE_TITLEBG = 0,
+    TEXTURE_TITLELOGO,
+    TEXTURE_TITLELOGOBG,
+    TEXTURE_TITLESTARTBUTTON,
     TEXTURE_RESULT,
     TEXTURE_MAX
 }TEXTURE_LABEL;
@@ -33,6 +34,7 @@ public:
     HRESULT MakeVertex(LPDIRECT3DDEVICE9 pDevice);
     void LoadTexture(TEXTURE_LABEL label);
     void SetColor(D3DXCOLOR color);
+    void Rotation(D3DXVECTOR2 imgCenter, float deg);
 
 private:
     bool m_bLoadTexture;

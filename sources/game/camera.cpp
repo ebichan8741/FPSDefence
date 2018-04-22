@@ -24,24 +24,24 @@
 //*************************************************************************************************
 HRESULT CCamera::Init(void)
 {
-    m_vCameraPos = D3DXVECTOR3(0.0f, 10.0f, -140.0f);
-    m_vCameraAt = D3DXVECTOR3(0.0f, 10.0f, 10.0f);
-    m_vVecUp = D3DXVECTOR3(0.0f, 1.0f, 0.0f);
-    m_vDir = D3DXVECTOR3(0.0f, 0.0f, 1.0f);
-    m_vMove = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
-    m_vForward = D3DXVECTOR3(0.0f, 0.0f, 1.0f);
-    m_vLeft = D3DXVECTOR3(1.0f, 0.0f, 0.0f);
-    m_vUp = D3DXVECTOR3(0.0f, 1.0f, 0.0f);
-    m_fAngle = 0.0f;
-    m_fYaw = 0.0f;
-    m_fPitch = 0.0f;
-    m_bFps = true;
-    m_Force = 0.0f;
-    m_Jump = false;
-    m_OldMove = false;
-    m_WalkInterval = 0;
-    m_SwingAmp = 0.0f;
-    m_SwingTime = 0.0f;
+    m_vCameraPos    = D3DXVECTOR3(0.0f, 10.0f, -140.0f);
+    m_vCameraAt     = D3DXVECTOR3(0.0f, 10.0f, 10.0f);
+    m_vVecUp        = D3DXVECTOR3(0.0f, 1.0f, 0.0f);
+    m_vDir          = D3DXVECTOR3(0.0f, 0.0f, 1.0f);
+    m_vMove         = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+    m_vForward      = D3DXVECTOR3(0.0f, 0.0f, 1.0f);
+    m_vLeft         = D3DXVECTOR3(1.0f, 0.0f, 0.0f);
+    m_vUp           = D3DXVECTOR3(0.0f, 1.0f, 0.0f);
+    m_fAngle        = 0.0f;
+    m_fYaw          = 0.0f;
+    m_fPitch        = 0.0f;
+    m_bFps          = true;
+    m_Force         = 0.0f;
+    m_Jump          = false;
+    m_OldMove       = false;
+    m_WalkInterval  = 0;
+    m_SwingAmp      = 0.0f;
+    m_SwingTime     = 0.0f;
     return 0;
 }
 
@@ -167,7 +167,6 @@ void CCamera::Update(void)
         // YawとPitchから前方の座標と左側、上側の座標を取得
         D3DXMatrixRotationYawPitchRoll(&m_mtxRot, m_fYaw, m_fPitch, 0.0f);
         D3DXVec3TransformNormal(&m_vForward, &vForward, &m_mtxRot);
-
         D3DXVec3TransformNormal(&m_vLeft, &vLeft, &m_mtxRot);
         D3DXVec3TransformNormal(&m_vUp, &vUp, &m_mtxRot);
         // どの方向を向いても前進速度一定にするためのX軸ベクトル
