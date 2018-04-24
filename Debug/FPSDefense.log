@@ -1,2 +1,6 @@
-﻿  FPSDefense.vcxproj -> C:\Users\ebichan\Documents\就職作品\FPSDefense\Debug\FPSDefense.exe
-  FPSDefense.vcxproj -> C:\Users\ebichan\Documents\就職作品\FPSDefense\Debug\FPSDefense.pdb (Full PDB)
+﻿  gameMode.cpp
+  player.cpp
+c:\users\tebic\documents\3year\就職作品\fpsdefense\sources\game\player\player.cpp(152): warning C4101: 'matDef': ローカル変数は 1 度も使われていません。
+  コードを生成中...
+  FPSDefense.vcxproj -> C:\Users\Tebic\Documents\3Year\就職作品\FPSDefense\Debug\FPSDefense.exe
+  FPSDefense.vcxproj -> C:\Users\Tebic\Documents\3Year\就職作品\FPSDefense\Debug\FPSDefense.pdb (Full PDB)

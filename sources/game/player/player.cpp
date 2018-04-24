@@ -11,12 +11,12 @@
 #include "../camera.h"
 #include "../../interface/sceneModel.h"
 #include "player.h"
-//#include "bullet.h"
+#include "playerBullet.h"
 #include "../meshField.h"
 #include "../../interface/fade.h"
 #include "../../result/resultMode.h"
 #include "../../interface/input.h"
-//#include "number.h"
+#include "../number.h"
 #include "../../interface/sound.h"
 //#include "effect.h"
 
@@ -27,6 +27,7 @@
 #define BULLET_NUM		(30)		// 1ƒ}ƒKƒWƒ“‚Ì’e”
 #define BULLET_RATE		(1)			// e‚Ì˜AŽË‘¬“x
 #define RELOAD_TIME		(150)		// ƒŠƒ[ƒhŽžŠÔ
+#define PLAYER_BULLET_SPEED    (10.0f)  // ƒvƒŒƒCƒ„[‚ÌƒoƒŒƒbƒgƒXƒs[ƒh
 
 //=================================================================================================
 // \‘¢‘ÌéŒ¾
@@ -101,12 +102,12 @@ void CPlayer::Update(void)
     if (CManager::GetInputMouse()->GetMouseTrigger(CLICK_LEFT)) {
         m_BulletRate = 0;
     }
-    //if (CManager::GetInputMouse()->GetMousePress(CLICK_LEFT) && m_BulletRate == 0 && m_BulletNum > 0) {
-    //    CBullet::Create(CManager::GetCamera()->GetCameraPos(), CManager::GetCamera()->GetCameraForward(), m_Type);
-    //    CEffect::Create(CManager::GetCamera()->GetCameraPos(), CManager::GetCamera()->GetCameraForward());
-    //    CManager::GetSound()->PlaySound(SOUND_LABEL_SE_SHOT);	// eºÄ¶
-    //    m_BulletNum--;
-    //}
+    if (CManager::GetInputMouse()->GetMousePress(CLICK_LEFT) && m_BulletRate == 0 && m_BulletNum > 0) {
+        CPlayerBullet::Create(CManager::GetCamera()->GetCameraPos(), CManager::GetCamera()->GetCameraForward(), PLAYER_BULLET_SPEED, m_Type);
+        //CEffect::Create(CManager::GetCamera()->GetCameraPos(), CManager::GetCamera()->GetCameraForward());
+        CManager::GetSound()->PlaySound(SOUND_LABEL_SE_SHOT);	// eºÄ¶
+        m_BulletNum--;
+    }
 
     // R‚ð‰Ÿ‚·‚©’e‚ª‚È‚­‚È‚Á‚½‚Æ‚«ƒŠƒ[ƒhˆ—
     if (m_Reload == false && m_BulletNum != BULLET_NUM && CManager::GetInputKeyboard()->GetKeyTrigger(DIK_R) || m_BulletNum == 0) {
@@ -121,16 +122,16 @@ void CPlayer::Update(void)
     m_BulletRate = (m_BulletRate + 1) % BULLET_RATE;
 
     // ’e”•\Ž¦
-    //CGameMode::GetBulletNumber(0)->SetNumber(m_BulletNum / 10, 0.0f);
-    //CGameMode::GetBulletNumber(1)->SetNumber(m_BulletNum % 10, 0.0f);
-    //CGameMode::GetBulletNumber(2)->SetNumber(4, 0.5f);
-    //CGameMode::GetBulletNumber(3)->SetNumber(BULLET_NUM / 10, 0.0f);
-    //CGameMode::GetBulletNumber(4)->SetNumber(BULLET_NUM % 10, 0.0f);
+    CGameMode::GetBulletNumber(0)->SetNumber(m_BulletNum / 10, 0.0f);
+    CGameMode::GetBulletNumber(1)->SetNumber(m_BulletNum % 10, 0.0f);
+    CGameMode::GetBulletNumber(2)->SetNumber(4, 0.5f);
+    CGameMode::GetBulletNumber(3)->SetNumber(BULLET_NUM / 10, 0.0f);
+    CGameMode::GetBulletNumber(4)->SetNumber(BULLET_NUM % 10, 0.0f);
 
-    //// ‚g‚o•\Ž¦
-    //CGameMode::GetHPNumber(0)->SetNumber(m_Life * 0.01f, 0.0f);
-    //CGameMode::GetHPNumber(1)->SetNumber((m_Life % 100) * 0.1f, 0.0f);
-    //CGameMode::GetHPNumber(2)->SetNumber(m_Life % 10, 0.0f);
+    // ‚g‚o•\Ž¦
+    CGameMode::GetHPNumber(0)->SetNumber(m_Life * 0.01f, 0.0f);
+    CGameMode::GetHPNumber(1)->SetNumber((m_Life % 100) * 0.1f, 0.0f);
+    CGameMode::GetHPNumber(2)->SetNumber(m_Life % 10, 0.0f);
 
     CSceneModel::Update();
 

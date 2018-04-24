@@ -79,17 +79,17 @@ HRESULT CGameMode::Init(void)
     //”ŽšƒeƒNƒXƒ`ƒƒ“Ç‚Ýž‚Ý
     CNumber::Load();
 
-    //’e”•\Ž¦¶¬
-    m_pBulletNumber[0] = CNumber::Create(D3DXVECTOR2(800.0f, 650.0f), D3DXVECTOR2(30.0f, 50.0f));
-    m_pBulletNumber[1] = CNumber::Create(D3DXVECTOR2(830.0f, 650.0f), D3DXVECTOR2(30.0f, 50.0f));
-    m_pBulletNumber[2] = CNumber::Create(D3DXVECTOR2(860.0f, 650.0f), D3DXVECTOR2(30.0f, 50.0f));
-    m_pBulletNumber[3] = CNumber::Create(D3DXVECTOR2(890.0f, 650.0f), D3DXVECTOR2(30.0f, 50.0f));
-    m_pBulletNumber[4] = CNumber::Create(D3DXVECTOR2(920.0f, 650.0f), D3DXVECTOR2(30.0f, 50.0f));
+    // ’e”•\Ž¦¶¬
+    m_pBulletNumber[0] = CNumber::Create(D3DXVECTOR2(1120.0f, 890.0f), D3DXVECTOR2(30.0f, 50.0f));
+    m_pBulletNumber[1] = CNumber::Create(D3DXVECTOR2(1150.0f, 890.0f), D3DXVECTOR2(30.0f, 50.0f));
+    m_pBulletNumber[2] = CNumber::Create(D3DXVECTOR2(1180.0f, 890.0f), D3DXVECTOR2(30.0f, 50.0f));
+    m_pBulletNumber[3] = CNumber::Create(D3DXVECTOR2(1210.0f, 890.0f), D3DXVECTOR2(30.0f, 50.0f));
+    m_pBulletNumber[4] = CNumber::Create(D3DXVECTOR2(1240.0f, 890.0f), D3DXVECTOR2(30.0f, 50.0f));
 
     // ‚g‚o•\Ž¦¶¬
-    m_pHPNumber[0] = CNumber::Create(D3DXVECTOR2(80.0f, 650.0f), D3DXVECTOR2(30.0f, 50.0f));
-    m_pHPNumber[1] = CNumber::Create(D3DXVECTOR2(110.0f, 650.0f), D3DXVECTOR2(30.0f, 50.0f));
-    m_pHPNumber[2] = CNumber::Create(D3DXVECTOR2(140.0f, 650.0f), D3DXVECTOR2(30.0f, 50.0f));
+    m_pHPNumber[0] = CNumber::Create(D3DXVECTOR2(80.0f, 890.0f), D3DXVECTOR2(30.0f, 50.0f));
+    m_pHPNumber[1] = CNumber::Create(D3DXVECTOR2(110.0f, 890.0f), D3DXVECTOR2(30.0f, 50.0f));
+    m_pHPNumber[2] = CNumber::Create(D3DXVECTOR2(140.0f, 890.0f), D3DXVECTOR2(30.0f, 50.0f));
 
 
     //CManager::GetSound()->PlaySound(SOUND_LABEL_BGM000);
